@@ -11,4 +11,5 @@ resource "aws_instance" "jenkins-slave" {
       when    = destroy
       command = "sh ./scripts/remove-host.sh jenkins-slave ~/.ssh/config"
   }
+    user_data = data.template_cloudinit_config.cloudinit-jenkins.rendered
 }
